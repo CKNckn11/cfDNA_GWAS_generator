@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cfdna-gwas-generator"
+version = "0.1.0"
+description = "Generate standalone shell pipelines for cfDNA-derived germline GWAS from BAM or FASTQ inputs."
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+  "PyYAML>=5.4"
+]
+authors = [
+  {name = "cfDNA GWAS Pipeline Team"}
+]
+
+[project.scripts]
+cfdna-gwas-generate = "cfdna_gwas_generator.generator:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
