@@ -1,0 +1,48 @@
+project:
+  name: lung_cfDNA_GWAS_bam
+  outdir: /400T/ckn/cfDNA_GWAS_generated_bam
+
+input:
+  type: bam
+  sample_table: /400T/ckn/cfDNA_GWAS_generator/samples.bam.example.tsv
+
+phenotype:
+  name: lung_vs_benign
+  case_label: Lung Cancer
+  control_label: Benign
+
+reference:
+  fasta: /400T/reference_genome/GRCh38.fa
+  chromosomes: [chr1, chr2, chr3, chr4, chr5, chr6, chr7, chr8, chr9, chr10, chr11, chr12, chr13, chr14, chr15, chr16, chr17, chr18, chr19, chr20, chr21, chr22]
+
+known_sites:
+  dbsnp: /400T/ckn/reference/Reference/hg38_v0_Homo_sapiens_assembly38.dbsnp138.vcf.gz
+  known_indels: /400T/ckn/reference/Reference/hg38_v0_Homo_sapiens_assembly38.known_indels.vcf.gz
+  mills: /400T/ckn/reference/Reference/hg38_v0_Mills_and_1000G_gold_standard.indels.hg38.vcf.gz
+
+tools:
+  fastqc: fastqc
+  bwa: bwa
+  samtools: /400T/ckn/software/samtools/samtools-1.9/samtools
+  gatk_jar: /400T/software/gatk/gatk-4.2.5.0/gatk-package-4.2.5.0-local.jar
+  bcftools: bcftools
+  plink2: /400T/ckn/software/plink2_linux_x86_64_20260504/plink2
+  rscript: Rscript
+
+resources:
+  bwa_threads: 8
+  hc_threads: 2
+  max_jobs: 4
+  java_mem_markdup: 16G
+  java_mem_bqsr: 16G
+  java_mem_hc: 8G
+  java_mem_joint: 16G
+
+plink_qc:
+  geno: 0.05
+  mind: 0.05
+  maf: 0.01
+  hwe: 1e-6
+
+gwas:
+  covars: [age, sex, PC1, PC2, PC3, PC4, PC5, PC6, PC7, PC8, PC9, PC10]
