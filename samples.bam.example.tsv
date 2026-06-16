@@ -1,0 +1,3 @@
+sample_id	bam	bai	phenotype	age	sex
+Lib-001	/400T/cfDNA_resource/BAM/lung/Lib-001/Lib-001.bam	/400T/cfDNA_resource/BAM/lung/Lib-001/Lib-001.bam.bai	Lung Cancer	60	1
+Lib-002	/400T/cfDNA_resource/BAM/lung/Lib-002/Lib-002.bam	/400T/cfDNA_resource/BAM/lung/Lib-002/Lib-002.bam.bai	Benign	55	2
